@@ -180,7 +180,7 @@ body {
     line-height: 1.5;
 }
 
-.burger {
+.burger{
     position: absolute;
     bottom: 0%;
     left: 25%;
@@ -188,7 +188,7 @@ body {
     flex-direction: column;
 }
 
-.burger img {
+.burger img{
     width: 154px;
     height: auto;
 }

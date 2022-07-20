@@ -22,69 +22,83 @@ var state = {
   Lettuce: false
 };
 
+let filling = document.querySelector('.filling')
 // This function renders the entire screen everytime the state changes accordingly
 function renderAll(event) {
-  renderPatty();
-  renderCheese();
-  renderTomatoes();
-  renderOnions();
-  renderLettuce();
-  // renderButtons();
   renderIngredientsBoard(event);
   renderPrice();
 }
-
+let burger = document.querySelector('.burger')
+let n = burger.children.length
 function renderPatty() {
-  let patty = document.querySelector("#patty");
-  //you can also use getElementById
+  let img = document.createElement('img')
+    img.src='./img/Burger/Patty.svg'
+    img.id = 'patty'
+    let patty = document.querySelector("#patty");
   if (state.Patty) {
-    patty.style.display = "inherit";
+    burger.insertBefore(img,burger.children[n-1])
   } else {
-    patty.style.display = "none";
+    burger.removeChild(patty)
   }
 }
 
 function renderCheese() {
   //Trial 1 - Change the visibility of cheese based on state by manipulating the DOM
-  let cheese = document.querySelector("#cheese");
-  //you can also use getElementById
+  let img = document.createElement('img')
+    img.src = "./img/Burger/Cheese@2x.png"
+    img.id = 'cheese'
+    let cheese = document.querySelector("#cheese");
   if (state.Cheese) {
-    cheese.style.display = "inherit";
-  } else {
-    cheese.style.display = "none";
+    burger.insertBefore(img,burger.children[n-1])
+  } 
+  else {
+    burger.removeChild(cheese)
   }
 }
 
 function renderTomatoes() {
+  let img = document.createElement('img')
+  img.src= "./img/Burger/Tomato@2x.png"
+  img.id = 'tomato'
   let tomato = document.querySelector("#tomato");
   if (state.Tomatoes) {
-    tomato.style.display = "inherit";
-  } else {
-    tomato.style.display = "none";
+    burger.insertBefore(img,burger.children[n-1])
+  } 
+  else {
+    burger.removeChild(tomato)
   }
 }
 
 function renderOnions() {
+  let img = document.createElement('img')
+  img.src="./img/Burger/Onion@2x.png"
+  img.id = 'onion'
   let onion = document.querySelector("#onion");
   if (state.Onions) {
-    onion.style.display = "inherit";
-  } else {
-    onion.style.display = "none";
+    burger.insertBefore(img,burger.children[n-1])
+  } 
+  else {
+    burger.removeChild(onion)
   }
 }
 
 function renderLettuce() {
+  let img = document.createElement('img')
+  img.src="./img/Burger/Lettuce@2x.png"
+  img.id = 'lettuce'
   let lettuce = document.querySelector("#lettuce");
   if (state.Lettuce) {
-    lettuce.style.display = "inherit";
-  } else {
-    lettuce.style.display = "none";
+    burger.insertBefore(img,burger.children[n-1])
+  } 
+  else {
+    burger.removeChild(lettuce)
   }
 }
 
 document.querySelector(".btn-patty").onclick = function (event) {
   state.Patty = !state.Patty;
   changeStatePatty()
+  renderPatty()
   renderAll(event);
 };
 
@@ -92,6 +106,7 @@ document.querySelector(".btn-patty").onclick = function (event) {
 document.querySelector(".btn-cheese").onclick = function (event) {
   state.Cheese = !state.Cheese;
   changeStateCheese();
+  renderCheese()
   renderAll(event);
 };
 
@@ -99,6 +114,7 @@ document.querySelector(".btn-cheese").onclick = function (event) {
 document.querySelector(".btn-tomatoes").onclick = function (event) {
   state.Tomatoes = !state.Tomatoes;
   changeStateTomato();
+  renderTomatoes()
   renderAll(event);
 };
 
@@ -106,6 +122,7 @@ document.querySelector(".btn-tomatoes").onclick = function (event) {
 document.querySelector(".btn-onions").onclick = function (event) {
   state.Onions = !state.Onions;
   changeStateOnion();
+  renderOnions()
   renderAll(event);
 };
 
@@ -113,6 +130,7 @@ document.querySelector(".btn-onions").onclick = function (event) {
 document.querySelector(".btn-lettuce").onclick = function (event) {
   state.Lettuce = !state.Lettuce;
   changeStateLettuce();
+  renderLettuce()
   renderAll(event);
 };
 
